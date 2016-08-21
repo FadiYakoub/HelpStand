@@ -1,14 +1,41 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    overflow-x: hidden;
 }
 
+.navbar {
+    background-color: #fff;
+    opacity: 0.5;
+    width: 50%;
+    margin: auto;
+}
+.navbar:hover {
+    opacity: 1;
+    height: 25% 
+}  
+.navbar-brand {
+    opacity: 1;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
+#containID {
+    max-width: 100%;
+    padding-top: 0px;
+    margin: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    right: 0;
+    left: 0;
+}
+
+.special, .special .jumbotron {
+    max-height: 100%;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

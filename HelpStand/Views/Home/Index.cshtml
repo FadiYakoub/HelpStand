@@ -3,19 +3,26 @@
 }
 
 
-<div class="jumbotron" id="googleMap" style="width:auto;height:800px;">
-
+<div class="jumbotron" style="max-width: 100%; height:100vh; padding: 0px; margin: 0px;">
+    <div class="container" id="googleMap" style="max-width: 100%; height:100%; padding: 0px; margin: 0px;">
+       
+    </div>
 </div>
 
-<div class="row">
+<div class="row" id="editFrm">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <h2>Put inside info popup</h2>
+        <div class="input-group">
+            <input type="text" class="form-control" id="txt1" placeholder="Organisation Name" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control" id="txt2" placeholder="Project Name" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control" id="txt3" placeholder="About" aria-describedby="basic-addon1">
+        </div>
+
+        <p><a class="btn btn-default" id="SubmitBtn"></a></p>
     </div>
     <div class="col-md-4">
         <h2>Get more libraries</h2>
@@ -25,13 +32,12 @@
     <div class="col-md-4">
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default">Learn more &raquo;</a></p>
     </div>
 </div>
 
-@*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5eIMIz70uYCWoXdLznCZt_Ij-c2ImiG8&callback=initMap"
-    type="text/javascript"></script>*@
-<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5eIMIz70uYCWoXdLznCZt_Ij-c2ImiG8&callback=initMap"></script>
+@*<script src="http://maps.googleapis.com/maps/api/js"></script>*@
 <script>
     function initialize() {
         var mapProp = {
@@ -45,38 +51,70 @@
             streetViewControl: false,
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        function myFunction() {
+            $('#containID').animate({
+                scrollTop: $(".row").offset().bottom
+            }, 1000);
+        }
+
+        var text1 = "";
+        var text2 = "";
+        var text3 = "";
 
         google.maps.event.addListener(map, 'click', function (event) {
             placeMarker(event.latLng);
+            myFunction();
+            text1 = $('#txt1').val();
+            text2 = $('#txt2').val();
+            text3 = $('#txt3').val();
         });
 
+
+
         function placeMarker(location) {
+
             var marker = new google.maps.Marker({
                 position: location,
                 map: map,
             });
 
+            //marker.set("id", 1);
+
             var infowindow = new google.maps.InfoWindow;
+
             google.maps.event.addListener(marker, 'click', function () {
 
-                infowindow.setContent('<p>llak</p>' + '<p>llak</p>' + '<button class="btn btn-default" id="editBtn">Edit</button>');
+                var infoContent = "<h1>" + text1 + "</h1>" + "<br/>" + "<br/>" + "<h2>" + text2 + "</h2>" + "<br/>" + "<h2>" + text3 + "</h2>";
+
+                infowindow.setContent(infoContent + '<br/>' + '<br/>' + '<button class="btn btn-default" id="editBtn">Edit</button>');
+
                 infowindow.open(map, this);
 
                 map.setZoom(16);
                 map.setCenter(marker.getPosition());
-
                 google.maps.event.addListener(infowindow, 'closeclick', function () {
-                    map.setZoom(11);
+                map.setZoom(11);
                 });
+
+                //$('#editBtn').click(myFunction);
+
             });
         }
 
-
     }
+
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    //$('.editBtn').attr('id', 'editBtn');
-    $('#editBtn').click(function () {
-        alert("Handler for .click() called.");
-    });
+
+
+    //$('#editBtn').click(function () {
+    //    //window.scrollBy(0, 180, 'slow');
+    //    //$('html, body').animate({
+    //    //    scrollTop: $("#editFrm").offset().bottom
+    //    //}, 1000);
+    //    alert("OK");
+    //    //    $('html,body').animate({
+    //    //        scrollTop: $(".second").offset().top},'slow');
+    //    //});
+    //});
 </script>
