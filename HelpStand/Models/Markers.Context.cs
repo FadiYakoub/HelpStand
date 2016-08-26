@@ -13,10 +13,10 @@ namespace HelpStand.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HelpStandEntities : DbContext
+    public partial class HelpStandEntities3 : DbContext
     {
-        public HelpStandEntities()
-            : base("name=HelpStandEntities")
+        public HelpStandEntities3()
+            : base("name=HelpStandEntities3")
         {
         }
     
@@ -25,6 +25,6 @@ namespace HelpStand.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Organization> Organization { get; set; }
+        public virtual DbSet<Marker> Marker { get; set; }
     }
 }

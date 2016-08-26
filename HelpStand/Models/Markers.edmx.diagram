@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0a6aba05c6c3420686a5aa64bdc423c7" Name="Diagram1">
-        <EntityTypeShape EntityType="HelpStandModel.Organization" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="c7064a0c7f144f10a2d754424d496a11" Name="Diagram1">
+        <EntityTypeShape EntityType="MarkerModel.Marker" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

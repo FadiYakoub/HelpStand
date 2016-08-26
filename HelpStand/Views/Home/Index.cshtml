@@ -3,80 +3,131 @@
 }
 
 
-<div class="jumbotron" id="googleMap" style="width:auto;height:800px;">
+<div class="jumbotron" style="max-width: 100%; height:100vh; padding: 0px; margin: 0px;">
+    <div class="container" id="googleMap" style="max-width: 100%; height:100%; padding: 0px; margin: 0px;">
 
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
 
-@*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5eIMIz70uYCWoXdLznCZt_Ij-c2ImiG8&callback=initMap"
-    type="text/javascript"></script>*@
-<script src="http://maps.googleapis.com/maps/api/js"></script>
+<div class="row" id="editFrm">
+    <div class="col-md-4">
+        @*<h2>Put inside info popup</h2>
+            <div class="input-group">
+                <input type="text" class="form-control" id="txt1" placeholder="Organisation Name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id="txt2" placeholder="Project Name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id="txt3" placeholder="About" aria-describedby="basic-addon1">
+            </div>*@
+        <textarea id="editTxtArea">Easy (and free!) You should check out our premium features.</textarea>
+
+
+    </div>
+    <div class="col-md-4">
+        <p><a class="btn btn-default" id="SubmitBtn">Spara</a></p>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5eIMIz70uYCWoXdLznCZt_Ij-c2ImiG8&callback=initMap"></script>
+@*<script src="http://maps.googleapis.com/maps/api/js"></script>*@
 <script>
+
     function initialize() {
         var mapProp = {
             center: new google.maps.LatLng(59.3173096, 18.1141274),
             zoom: 11,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            zoomControl: false,
+            zoomControl: true,
             scaleControl: false,
             scrollwheel: false,
             disableDoubleClickZoom: true,
             streetViewControl: false,
         };
+
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        var text1 = "";
+        var text2 = "";
+        var text3 = "";
+        var editTxtInfo = "";
+
+
 
         google.maps.event.addListener(map, 'click', function (event) {
             placeMarker(event.latLng);
+            text1 = $('#txt1').val();
+            text2 = $('#txt2').val();
+            text3 = $('#txt3').val();
+
         });
 
+
+
         function placeMarker(location) {
+
             var marker = new google.maps.Marker({
                 position: location,
                 map: map,
             });
 
+            //marker.set("id", 1);
+
             var infowindow = new google.maps.InfoWindow;
+
+
+            $('html, body').animate({
+                scrollTop: 1000
+            }, 200);
+
+
             google.maps.event.addListener(marker, 'click', function () {
 
-                infowindow.setContent('<p>llak</p>' + '<p>llak</p>' + '<button class="btn btn-default" id="editBtn">Edit</button>');
+                //var infoContent = "<h1>" + text1 + "</h1>" + "<br/>" + "<br/>" + "<h2>" + text2 + "</h2>" + "<br/>" + "<h2>" + text3 + "</h2>";
+
+                infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;"><img src="https://opensource.org/files/twitterlogo.png" alt="TinyMCE" width="100" height="100" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;">TinyMCE is a platform independent web-based JavaScript HTML WYSIWYG<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
+
+                editTxtInfo = $('#editTxtArea').val();
+                //infowindow.setContent(editTxtInfo + '<button class="btn btn-default" id="editBtn">Edit</button>');
+                $('#SubmitBtn').click(function () {
+                    infowindow.setContent(editTxtInfo + '<button class="btn btn-default" id="editBtn">Edit</button>')
+                });
+
+                //infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;\"><img src=\"images/glyph-tinymce@2x.png\" alt="TinyMCE" width="110" height="97" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;\">TinyMCE is a platform independent web-based JavaScript HTML<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
+
                 infowindow.open(map, this);
 
                 map.setZoom(16);
                 map.setCenter(marker.getPosition());
-
                 google.maps.event.addListener(infowindow, 'closeclick', function () {
                     map.setZoom(11);
                 });
-            });
-        }
 
+                $('#editBtn').click(function () {
+                    $('html, body').animate({
+                        scrollTop: 1000
+                    }, 200);
+                });
+
+            });
+
+
+        }
+        $('#SubmitBtn').click(function () {
+            $('html, body').animate({
+                scrollTop: '-=1000'
+            }, 200);
+        });
 
     }
+
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    //$('.editBtn').attr('id', 'editBtn');
-    $('#editBtn').click(function () {
-        alert("Handler for .click() called.");
-    });
+
+
+
 </script>

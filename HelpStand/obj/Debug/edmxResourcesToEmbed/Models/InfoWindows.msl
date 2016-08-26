@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InfoWindowModelStoreContainer" CdmEntityContainer="HelpStandEntities4">
+    <EntitySetMapping Name="InfoWindow">
+      <EntityTypeMapping TypeName="InfoWindowModel.InfoWindow">
+        <MappingFragment StoreEntitySet="InfoWindow">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HTML" ColumnName="HTML" />
+          <ScalarProperty Name="MarkerID" ColumnName="MarkerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -205,24 +205,60 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Organization.Context.cs">
+    <Compile Include="Models\InfoWindow.cs">
+      <DependentUpon>InfoWindows.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InfoWindows.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Organization.Context.tt</DependentUpon>
+      <DependentUpon>InfoWindows.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InfoWindows.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfoWindows.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InfoWindows.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfoWindows.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Marker.cs">
+      <DependentUpon>Markers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Markers.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Markers.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Markers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Markers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Markers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Markers.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Organization.cs">
-      <DependentUpon>Organization.tt</DependentUpon>
+      <DependentUpon>Organizations.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Organization.Designer.cs">
+    <Compile Include="Models\Organizations.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Organization.edmx</DependentUpon>
+      <DependentUpon>Organizations.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Organization1.cs">
+    <Compile Include="Models\Organizations.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Organization.tt</DependentUpon>
+      <DependentUpon>Organizations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Organizations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Organizations.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -230,19 +266,41 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\HelpStand-Logo.gif" />
+    <Content Include="Content\Images\HelpStand-Text.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Organization.Context.tt">
+    <Content Include="Models\InfoWindows.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Organization.edmx</DependentUpon>
-      <LastGenOutput>Organization.Context.cs</LastGenOutput>
+      <DependentUpon>InfoWindows.edmx</DependentUpon>
+      <LastGenOutput>InfoWindows.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Organization.tt">
+    <Content Include="Models\InfoWindows.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Organization.edmx</DependentUpon>
-      <LastGenOutput>Organization1.cs</LastGenOutput>
+      <DependentUpon>InfoWindows.edmx</DependentUpon>
+      <LastGenOutput>InfoWindows.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Markers.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Markers.edmx</DependentUpon>
+      <LastGenOutput>Markers.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Markers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Markers.edmx</DependentUpon>
+      <LastGenOutput>Markers.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Organizations.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Organizations.edmx</DependentUpon>
+      <LastGenOutput>Organizations.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Organizations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Organizations.edmx</DependentUpon>
+      <LastGenOutput>Organizations.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -251,12 +309,26 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Organization.edmx">
+    <EntityDeploy Include="Models\Organizations.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Organization.Designer.cs</LastGenOutput>
+      <LastGenOutput>Organizations.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Organization.edmx.diagram">
-      <DependentUpon>Organization.edmx</DependentUpon>
+    <Content Include="Models\Organizations.edmx.diagram">
+      <DependentUpon>Organizations.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Markers.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Markers.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Markers.edmx.diagram">
+      <DependentUpon>Markers.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\InfoWindows.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>InfoWindows.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\InfoWindows.edmx.diagram">
+      <DependentUpon>InfoWindows.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -269,8 +341,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SharedJs.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
