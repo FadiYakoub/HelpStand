@@ -89,12 +89,14 @@
 
                 //var infoContent = "<h1>" + text1 + "</h1>" + "<br/>" + "<br/>" + "<h2>" + text2 + "</h2>" + "<br/>" + "<h2>" + text3 + "</h2>";
 
-                infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;"><img src="https://opensource.org/files/twitterlogo.png" alt="TinyMCE" width="100" height="100" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;">TinyMCE is a platform independent web-based JavaScript HTML WYSIWYG<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
+                //infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;"><img src="https://opensource.org/files/twitterlogo.png" alt="TinyMCE" width="100" height="100" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;">TinyMCE is a platform independent web-based JavaScript HTML WYSIWYG<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
 
                 editTxtInfo = $('#editTxtArea').val();
                 //infowindow.setContent(editTxtInfo + '<button class="btn btn-default" id="editBtn">Edit</button>');
+
                 $('#SubmitBtn').click(function () {
-                    infowindow.setContent(editTxtInfo + '<button class="btn btn-default" id="editBtn">Edit</button>')
+                    //alert("'" + editTxtInfo + "'");
+                    infowindow.setContent("'" + editTxtInfo + "'" + '<button class="btn btn-default" id="editBtn">Edit</button>');
                 });
 
                 //infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;\"><img src=\"images/glyph-tinymce@2x.png\" alt="TinyMCE" width="110" height="97" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;\">TinyMCE is a platform independent web-based JavaScript HTML<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
@@ -129,5 +131,26 @@
 
 
 
+</script>
+<script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: "#editTxtArea",
+        browser_spellcheck: true,
+        contextmenu: false,
+        width : 600,
+        plugin_preview_width: 600,
+        plugins: [
+            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern",
+            "preview"
+        ],
+       
+        toolbar1: "undo redo | cut copy paste |  bullist numlist | outdent indent code | preview",
+        toolbar2: "fontselect | fontsizeselect | forecolor bold italic underline | alignleft aligncenter alignright alignjustify",
 
+        toolbar_items_size: "large"
+        
+    });
 </script>
