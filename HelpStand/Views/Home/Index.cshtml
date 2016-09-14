@@ -51,31 +51,28 @@
 
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-        var text1 = "";
-        var text2 = "";
-        var text3 = "";
+        var markerlong = "";
+        var markerlat = "";
+        
         var editTxtInfo = "";
-
 
 
         google.maps.event.addListener(map, 'click', function (event) {
             placeMarker(event.latLng);
-            text1 = $('#txt1').val();
-            text2 = $('#txt2').val();
-            text3 = $('#txt3').val();
 
         });
 
-
-
+        var i = 0;
+        
         function placeMarker(location) {
 
             var marker = new google.maps.Marker({
                 position: location,
                 map: map,
+                
             });
-
-            //marker.set("id", 1);
+            
+            marker.set("id", ++i);
 
             var infowindow = new google.maps.InfoWindow;
 
@@ -84,22 +81,18 @@
                 scrollTop: 1000
             }, 200);
 
+            var point = marker.getPosition();
+            markerlong = point.lng;
+            markerlat = point.lat;
 
+            $('#SubmitBtn').click(function () {
+                editTxtInfo = $('#editTxtArea').val();
+            });
+
+           
             google.maps.event.addListener(marker, 'click', function () {
 
-                //var infoContent = "<h1>" + text1 + "</h1>" + "<br/>" + "<br/>" + "<h2>" + text2 + "</h2>" + "<br/>" + "<h2>" + text3 + "</h2>";
-
-                //infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;"><img src="https://opensource.org/files/twitterlogo.png" alt="TinyMCE" width="100" height="100" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;">TinyMCE is a platform independent web-based JavaScript HTML WYSIWYG<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
-
-                editTxtInfo = $('#editTxtArea').val();
-                //infowindow.setContent(editTxtInfo + '<button class="btn btn-default" id="editBtn">Edit</button>');
-
-                $('#SubmitBtn').click(function () {
-                    //alert("'" + editTxtInfo + "'");
-                    infowindow.setContent("'" + editTxtInfo + "'" + '<button class="btn btn-default" id="editBtn">Edit</button>');
-                });
-
-                //infowindow.setContent('<p>&nbsp;</p><p style="text-align: center; font-size: 15px;\"><img src=\"images/glyph-tinymce@2x.png\" alt="TinyMCE" width="110" height="97" /></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-family: avenir; font-weight: 200;\">TinyMCE is a platform independent web-based JavaScript HTML<br /> editor control released as open source under LGPL.</p><p style="text-align: center; color: #868686; font-size: 15px; font-family: avenir; font-weight: 200;"><em>TinyMCE enables you to convert HTML textarea fields or other HTML elements to editor instances.</em></p><p>&nbsp;</p>');
+                infowindow.setContent("'" + editTxtInfo + "'" + '<button class="btn btn-default" id="editBtn">Edit</button>');
 
                 infowindow.open(map, this);
 
