@@ -86,13 +86,14 @@
             markerlat = point.lat;
 
             $('#SubmitBtn').click(function () {
-                editTxtInfo = $('#editTxtArea').val();
+                editTxtInfo = tinyMCE.activeEditor.getContent({ format: 'raw' });
+                alert(editTextInfo);
             });
 
            
             google.maps.event.addListener(marker, 'click', function () {
 
-                infowindow.setContent("'" + editTxtInfo + "'" + '<button class="btn btn-default" id="editBtn">Edit</button>');
+                infowindow.setContent(editTxtInfo + '<button class="btn btn-default" id="editBtn">Edit</button>');
 
                 infowindow.open(map, this);
 
@@ -112,6 +113,9 @@
 
 
         }
+
+
+
         $('#SubmitBtn').click(function () {
             $('html, body').animate({
                 scrollTop: '-=1000'
